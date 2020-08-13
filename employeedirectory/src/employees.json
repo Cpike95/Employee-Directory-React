@@ -1,0 +1,38 @@
+ [
+        {
+      "id": 1,
+      "firstName":"Milk",
+      "lastName":"joe",
+      "occupation":"CFO"
+    },
+    {
+      "id": 2,
+      "firstName":"Eggs",
+      "lastName":"joe",
+      "occupation":"CEO"
+    },
+    {
+      "id": 3,
+      "firstName":"Cheese",
+      "lastName":"joe",
+      "occupation":"HR"
+    },
+    {
+      "id": 4,
+      "firstName":"Cake Mix",
+      "lastName":"joe",
+      "occupation":"Manager"
+    },
+    {
+      "id": 5,
+      "firstName":"Carrots",
+      "lastName":"joe",    
+      "occupation":"Developer"
+    },
+    {
+      "id": 6,
+      "firstName":"Juice",
+      "lastName":"joe",
+      "occupation":"Sales"
+    }
+]
