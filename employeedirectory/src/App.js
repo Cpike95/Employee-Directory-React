@@ -1,44 +1,53 @@
 import React, { Component } from "react";
-// import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper/index.js";
 import Title from "./components/Title/index.js";
-import './App.css';
-import List from './components/EmployeeCard/index.js'
-import employees from "./employees.json";
+import Search from './components/Search/index.js'
 import Header from './components/Header/index.js'
+import API from "./utils/API";
 
 class App extends Component {
   state = {
-    employees
+    results:[],
+    search: '',
+    
   };
-//sorting function by last name state
-handleSort = (items) => {
-  const { occupation } = items;
-  let sorted = [...occupation];
-  sorted.sort((a, b) => {
-    if (a.items.occupation < b.items.occupation) {
-      return -1;
-    }
-    if (a.items.occupation > b.items.occupation) {
-      return 1;
-    }
-    return 0;
-  });
-}
+
+  componentDidMount() {
+    this.testEmployees();
+  }
+
+  testEmployees = () => {
+    API.displayEmployees()
+      .then(res => this.setState({ results: res.data.results }))
+      .catch(err => console.log(err));
+  };
+
+  // sortDescending = () => {
+  //   const { occupation } = this.state;
+  //   occupation.sort((a, b) => a - b).reverse()
+  //   this.setState({ occupation })
+  // };
+   handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+
+    this.setState({
+      [name]: value
+    });
+  };
   render() {
+    // we can filter our results/employees here
+    // have some code (using .filter method on our this.state.results)
+    const filteredResults = this.state.results.filter(employee => employee.name.first.includes(this.state.search))
     return(
       <Wrapper>
         <Title>Employee Directory</Title>
-        <Header/>
-          {this.state.employees.map(emp => (
-              <List 
-              id={emp.id}
-              key={emp.id}
-              firstName={emp.firstName}
-              lastName={emp.lastName}
-              occupation={emp.occupation}  
-              />
-           ))};
+        
+        <Search handleInputChange={this.handleInputChange}/>
+           <Header
+              key={this.state.results}
+              results={filteredResults}
+              />       
     </Wrapper>
     )
   };

@@ -2,15 +2,16 @@ import React from "react";
 
 function List(props) {
     return (
-        <table className="table">
-            <tbody>
-                <tr>
-                    <td>{props.firstName}</td>
-                    <td>{props.lastName}</td> 
-                    <td>{props.occupation}</td> 
-                </tr>
-            </tbody>
-        </table>
+
+        <tbody>
+            { props.results.map(employee => (
+            <tr>
+                <td> {employee.name.first}</td>
+                <td> {employee.name.last}</td> 
+                <td> {employee.email}</td> 
+                <td> {employee.dob.age}</td>
+            </tr>
+            ))}
+        </tbody>
     )};
-  
   export default List;

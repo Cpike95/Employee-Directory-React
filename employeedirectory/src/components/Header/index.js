@@ -1,22 +1,27 @@
 import React from "react";
+import List from "../EmployeeCard";
 
 function Header(props){
 
-  //Use the handle sort method on the occupation field
-    return(
+    return (
+      <table className="table">
 
-     <table className="table">
-        <thead className="thead-dark">
-            <tr>        
+        <thead className="thead-dark" >
+            <tr>       
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th> 
-              <th scope="col">
-                <button type="button" onClick={props.handleSort}>Occupation</button>
+              <th scope="col">Email</th> 
+              <th scope="col">  
+              {/* //Use the handle sort method on the occupation field */}
+                <button type="button" onClick={props.sortDescending}>Age</button>
               </th>
             </tr>
         </thead>
-    </table>
-    
+          <List 
+            key={props.results}
+            results={props.results}
+          />
+          </table>
   )};
 
 export default Header;
