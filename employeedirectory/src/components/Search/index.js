@@ -1,6 +1,7 @@
 import React from "react";
 
 function Search(props) {
+ 
     return (
         <div className="input-group mb-3">
         <div className="input-group-prepend">

@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     results:[],
     search: '',
-    
+    isOldestFirst: true,
   };
 
   componentDidMount() {
@@ -18,38 +18,59 @@ class App extends Component {
 
   testEmployees = () => {
     API.displayEmployees()
-      .then(res => this.setState({ results: res.data.results }))
-      .catch(err => console.log(err));
+      .then(res => this.setState({ results: res.data.results, isOldestFirst: true }))   
+      .catch(err => console.log(err))
+    };
+ 
+  handleInputChange = event => {
+    event.preventDefault();
+    this.setState({search : event.target.value})
+  }
+
+//sort the results by age then render the sort 
+//change state to true if isOldestFirst is true
+  sortOld =()=> {
+    this.setState({isOldestFirst: true})
+  }
+
+  //change state to false if isOldestFirst false
+  sortYoung=()=>{
+    this.setState({isOldestFirst: false})
+  }
+
+  sortAge= () => {
+    const  {results}  = this.state;
+    let newOrder = results;
+    if(this.state.isOldestFirst){ 
+       newOrder.sort((a,b) => a.dob.age - b.dob.age);
+       this.sortYoung();
+    } else if (!this.state.isOldestFirst){
+       newOrder.sort((a,b) => b.dob.age - a.dob.age);
+       this.sortOld()
+
+    } 
   };
-
-  // sortDescending = () => {
-  //   const { occupation } = this.state;
-  //   occupation.sort((a, b) => a - b).reverse()
-  //   this.setState({ occupation })
-  // };
-   handleInputChange = event => {
-    const value = event.target.value;
-    const name = event.target.name;
-
-    this.setState({
-      [name]: value
-    });
+  handleSort= () => {
+    this.sortAge();
   };
   render() {
-    // we can filter our results/employees here
-    // have some code (using .filter method on our this.state.results)
+  //   // we can filter our results/employees here
+  //   // have some code (using .filter method on our this.state)
     const filteredResults = this.state.results.filter(employee => employee.name.first.includes(this.state.search))
-    return(
+ 
+  console.log(this.state)
+  return(
       <Wrapper>
         <Title>Employee Directory</Title>
-        
-        <Search handleInputChange={this.handleInputChange}/>
+        <Search  handleInputChange={this.handleInputChange} />
            <Header
-              key={this.state.results}
               results={filteredResults}
+              handleSort={this.handleSort}
+              isOldestFirst={this.state.isOldestFirst}
               />       
     </Wrapper>
     )
   };
 }
+
 export default App;
