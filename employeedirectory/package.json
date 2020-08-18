@@ -12,7 +12,9 @@
     "react-scripts": "^3.4.3",
     "serve": "^11.3.2"
   },
-
+  "buildpacks": {
+    "url": "  https://directory-employees.herokuapp.com/ | https://git.heroku.com/directory-employees.git"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
