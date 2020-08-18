@@ -13,7 +13,7 @@
     "serve": "^11.3.2"
   },
   "buildpacks": {
-    "url": "  https://directory-employees.herokuapp.com/ | https://git.heroku.com/directory-employees.git"
+    "url": "https://the-emplyee-direct.herokuapp.com/ | https://git.heroku.com/the-emplyee-direct.git"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "engines": {
+    "npm": "5.7.1",
+    "node": "9.5.0"
+}
 }
