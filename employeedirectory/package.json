@@ -11,7 +11,11 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3"
   },
-
+  
+    "buildpacks": 
+      {
+        "url": "  https://directory-employees.herokuapp.com/ | https://git.heroku.com/directory-employees.git"
+      },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
