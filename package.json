@@ -12,9 +12,7 @@
     "react-scripts": "^3.4.3",
     "serve": "^11.3.2"
   },
-  "buildpacks": {
-    "url": "https://the-emplyee-direct.herokuapp.com/ | https://git.heroku.com/the-emplyee-direct.git"
-  },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
